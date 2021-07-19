@@ -6,12 +6,13 @@
   <script type="text/babel">
     function Greeting() {
       const [name, setName] = React.useState(
-        () => window.localStorage.getItem('name') || '',
+        () => window.localStorage.getItem('numele') || '',
       )
 
       React.useEffect(() => {
-        window.localStorage.setItem('name', name)
-      }, [name])
+        console.log('Render')
+        window.localStorage.setItem('numele', name)
+      }, [name] )
 
       const handleChange = event => setName(event.target.value)
 

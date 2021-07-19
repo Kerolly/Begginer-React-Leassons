@@ -5,27 +5,24 @@
   <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
   <script type="text/babel">
     function Greeting() {
-      const [name, setName] = React.useState(
-        window.localStorage.getItem('name') || '',
-      )
+      const [name, setName] = React.useState(window.localStorage.getItem('name') || '')
 
+      const handleChange = (event) => {setName(event.target.value)}
       React.useEffect(() => {
         window.localStorage.setItem('name', name)
       })
-
-      const handleChange = event => setName(event.target.value)
-
       return (
         <div>
           <form>
-            <label htmlFor="name">Name: </label>
-            <input value={name} onChange={handleChange} id="name" />
+            <label htmlFor="name">Numele</label>
+            <input value={name} id="name" onChange={handleChange} />
           </form>
-          {name ? <strong>Hello {name}</strong> : 'Please type your name'}
+          {name ? <strong>Salut {name} ! <br/> Ce mai faci? </strong> : 'As dori sa stiu numele tau'}
+
         </div>
-      )
+      );
     }
 
-    ReactDOM.render(<Greeting />, document.getElementById('root'))
+    ReactDOM.render(<Greeting />, document.getElementById("root"));
   </script>
 </body>

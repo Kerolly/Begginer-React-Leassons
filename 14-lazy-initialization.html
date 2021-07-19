@@ -5,15 +5,17 @@
   <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
   <script type="text/babel">
     function Greeting() {
-      const [name, setName] = React.useState(
-        () => window.localStorage.getItem('name') || '',
-      )
+      const [name, setName] = React.useState(() => {
+       console.log('Hello World')
+        return window.localStorage.getItem("nume") || "";
+      });
+      console.log('render')
 
       React.useEffect(() => {
-        window.localStorage.setItem('name', name)
-      })
+        window.localStorage.setItem("nume", name);
+      });
 
-      const handleChange = event => setName(event.target.value)
+      const handleChange = (event) => setName(event.target.value);
 
       return (
         <div>
@@ -21,11 +23,11 @@
             <label htmlFor="name">Name: </label>
             <input value={name} onChange={handleChange} id="name" />
           </form>
-          {name ? <strong>Hello {name}</strong> : 'Please type your name'}
+          {name ? <strong>Hello {name}</strong> : "Please type your name"}
         </div>
-      )
+      );
     }
 
-    ReactDOM.render(<Greeting />, document.getElementById('root'))
+    ReactDOM.render(<Greeting />, document.getElementById("root"));
   </script>
 </body>
